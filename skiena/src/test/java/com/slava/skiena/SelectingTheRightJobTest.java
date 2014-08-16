@@ -1,6 +1,7 @@
-package com.slava.skiena.sort.com.slava.skiena;
+package com.slava.skiena;
 
 import com.google.common.collect.Lists;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public class SelectingTheRightJobTest {
 
     @Test
     public void testGetTheRightJobs() throws Exception {
-        List<SelectingTheRightJob.Job> expectedJobs = Lists.newArrayList(
+        List<SelectingTheRightJob.Job> jobs = Lists.newArrayList(
                 new SelectingTheRightJob.Job("The President's Algorist", 1, 20),
                 new SelectingTheRightJob.Job("Discrete Mathematics", 3, 15),
                 new SelectingTheRightJob.Job("Tarjan ot the Jungle", 7, 24),
@@ -24,6 +25,15 @@ public class SelectingTheRightJobTest {
                 new SelectingTheRightJob.Job("Calculated Bets", 50, 65)
         );
 
-        System.out.print(SelectingTheRightJob.getTheRightJobs(expectedJobs));
+        List<SelectingTheRightJob.Job> expectedJobs = Lists.newArrayList(
+                new SelectingTheRightJob.Job("Discrete Mathematics", 3, 15),
+                new SelectingTheRightJob.Job("Halting State", 19, 29),
+                new SelectingTheRightJob.Job("Programming Challenges", 35, 47),
+                new SelectingTheRightJob.Job("Calculated Bets", 50, 65)
+        );
+
+        jobs = SelectingTheRightJob.getTheRightJobs(jobs);
+
+        Assert.assertArrayEquals(expectedJobs.toArray(), jobs.toArray());
     }
 }
